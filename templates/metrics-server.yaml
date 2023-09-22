@@ -13,6 +13,9 @@ spec:
     targetRevision: 3.11.0
     helm:
       releaseName: metrics-server
+      valuesObject:
+        args:
+          - "--kubelet-insecure-tls"
   destination:
     server: {{ .Values.spec.destination.server }}
     namespace: monitoring
