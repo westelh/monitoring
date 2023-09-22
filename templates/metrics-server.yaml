@@ -1,8 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sealed-secrets
+  name: metrics-server
   namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
@@ -12,5 +14,5 @@ spec:
     helm:
       releaseName: metrics-server
   destination:
-    server: "https://kubernetes.default.svc"
+    server: {{ .Values.spec.destination.server }}
     namespace: monitoring
