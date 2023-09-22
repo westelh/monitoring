@@ -6,6 +6,9 @@ metadata:
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
+  syncPolicy:
+    syncOptions:
+    - ServerSideApply=true
   project: default
   source:
     chart: kube-prometheus-stack
